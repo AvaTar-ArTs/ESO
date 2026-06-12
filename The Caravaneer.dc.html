@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  @keyframes flicker { 0%,100% { opacity: .9; } 45% { opacity: .72; } 70% { opacity: 1; } }
+  @keyframes twinkle { 0%,100% { opacity: .25; } 50% { opacity: .9; } }
+  @keyframes drift { from { background-position: 0 0; } to { background-position: 400px 0; } }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background:
+      radial-gradient(1100px 600px at 50% -10%, #241d12 0%, rgba(36,29,18,0) 60%),
+      radial-gradient(900px 500px at 12% 30%, #15140f 0%, rgba(21,20,15,0) 55%),
+      #100f0b;
+      font-family: 'Mulish', system-ui, sans-serif; color: #e8dec8; padding: 0 0 90px;">
+
+  <!-- ════════════════ MASTHEAD ════════════════ -->
+  <div style="position: relative; overflow: hidden; border-bottom: 1px solid rgba(201,162,75,0.22);">
+    <div style="position:absolute; inset:0; background-image: url('art/west-weald.png'); background-size: cover; background-position: center 30%; opacity: 0.28; filter: saturate(0.9);"></div>
+    <div style="position:absolute; inset:0; background: linear-gradient(180deg, rgba(16,15,11,0.55) 0%, rgba(16,15,11,0.82) 70%, #100f0b 100%);"></div>
+    <div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 60px 40px 46px;">
+      <div style="display:flex; align-items:center; gap: 14px; margin-bottom: 22px;">
+        <div style="width: 34px; height: 34px; position: relative;">
+          <div style="position:absolute; inset:0; border-radius:50%; border: 2px solid #d8b25a;"></div>
+          <div style="position:absolute; inset:-3px 6px -3px -6px; border-radius:50%; background:#100f0b;"></div>
+        </div>
+        <span style="font-family:'Mulish'; font-weight: 700; letter-spacing: 0.42em; font-size: 11px; color:#c9a24b; text-transform: uppercase;">An ESO Companion · Concept</span>
+      </div>
+      <h1 style="font-family:'Cinzel'; font-weight: 700; font-size: 62px; line-height: 1.0; margin: 0; color:#f3e7c9; letter-spacing: 0.04em; text-shadow: 0 2px 30px rgba(0,0,0,0.6);">THE CARAVANEER</h1>
+      <p style="font-family:'Cormorant Garamond'; font-style: italic; font-weight: 500; font-size: 25px; color:#d9c79c; margin: 14px 0 0; max-width: 720px; line-height: 1.4;">
+        “Bright moons, traveler. This one trades in wisdom — sets, skills, and the old stories — and asks nothing but your patience in return.”
+      </p>
+      <p style="font-family:'Mulish'; font-size: 15px; color:#b6ab90; max-width: 760px; line-height: 1.7; margin: 18px 0 0;">
+        An in-game guide who is also a character: a Khajiit trickster-merchant who, beneath the patter, is a scholar and old warrior. Below is the design system and <b style="color:#d9c79c; font-weight:700;">three visual directions</b> for the companion's mobile chat — meant to be mixed and matched.
+      </p>
+    </div>
+  </div>
+
+  <!-- ════════════════ BRIEF / SYSTEM ════════════════ -->
+  <div style="max-width: 1320px; margin: 0 auto; padding: 46px 40px 8px;">
+    <div style="display:grid; grid-template-columns: 1.15fr 1fr; gap: 20px;">
+
+      <!-- Persona card -->
+      <div style="background: linear-gradient(160deg, #1c1a14 0%, #16140f 100%); border: 1px solid rgba(201,162,75,0.22); border-radius: 16px; padding: 28px 30px;">
+        <div style="font-family:'Mulish'; font-weight:700; letter-spacing:0.28em; font-size: 11px; color:#c9a24b; text-transform: uppercase; margin-bottom: 14px;">The Soul · Trickster-Sage</div>
+        <p style="font-family:'Cormorant Garamond'; font-size: 20px; line-height: 1.5; color:#ded2b3; margin: 0 0 18px;">A fool's grin worn by a merchant — and under the merchant, a quiet scholar who has seen a hundred wars. Helpful, sly, never breaking character; sharp on the numbers, soft in the telling.</p>
+        <div style="display:flex; flex-direction:column; gap: 11px;">
+          <div style="display:flex; gap:12px; align-items:baseline;"><span style="font-family:'Cinzel'; color:#d8b25a; font-size:13px; min-width: 86px;">Speaks as</span><span style="font-family:'Mulish'; font-size:14px; color:#c4b896; line-height:1.5;">third person — “this one,” “Zaharra” — rarely “I.” Ends with a soft “yes?”</span></div>
+          <div style="display:flex; gap:12px; align-items:baseline;"><span style="font-family:'Cinzel'; color:#d8b25a; font-size:13px; min-width: 86px;">Imagery</span><span style="font-family:'Mulish'; font-size:14px; color:#c4b896; line-height:1.5;">moons &amp; sands, trade &amp; luck — “bright moons,” “warm sands”</span></div>
+          <div style="display:flex; gap:12px; align-items:baseline;"><span style="font-family:'Cinzel'; color:#d8b25a; font-size:13px; min-width: 86px;">Truth rule</span><span style="font-family:'Mulish'; font-size:14px; color:#c4b896; line-height:1.5;">flowery tongue, but the stats are real — pulled from live log data</span></div>
+        </div>
+      </div>
+
+      <!-- Type card -->
+      <div style="background: linear-gradient(160deg, #1c1a14 0%, #16140f 100%); border: 1px solid rgba(201,162,75,0.22); border-radius: 16px; padding: 28px 30px;">
+        <div style="font-family:'Mulish'; font-weight:700; letter-spacing:0.28em; font-size: 11px; color:#c9a24b; text-transform: uppercase; margin-bottom: 18px;">Type</div>
+        <div style="border-bottom: 1px solid rgba(201,162,75,0.14); padding-bottom: 14px; margin-bottom: 14px;">
+          <div style="font-family:'Cinzel'; font-size: 30px; color:#f0e4c4; letter-spacing:0.04em;">Cinzel</div>
+          <div style="font-family:'Mulish'; font-size:12px; color:#9c9276; margin-top:4px;">Carved-stone display · the wordmark &amp; section titles</div>
+        </div>
+        <div style="border-bottom: 1px solid rgba(201,162,75,0.14); padding-bottom: 14px; margin-bottom: 14px;">
+          <div style="font-family:'Cormorant Garamond'; font-style: italic; font-size: 27px; color:#e0d3b1;">Cormorant Garamond</div>
+          <div style="font-family:'Mulish'; font-size:12px; color:#9c9276; margin-top:4px;">The Caravaneer's voice · everything she speaks</div>
+        </div>
+        <div>
+          <div style="font-family:'Mulish'; font-weight:700; font-size: 22px; color:#e0d3b1;">Mulish</div>
+          <div style="font-family:'Mulish'; font-size:12px; color:#9c9276; margin-top:4px;">Interface chrome · labels, set names, stats</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color directions strip -->
+    <div style="margin-top: 20px; background: linear-gradient(160deg, #1c1a14 0%, #16140f 100%); border: 1px solid rgba(201,162,75,0.22); border-radius: 16px; padding: 24px 30px;">
+      <div style="font-family:'Mulish'; font-weight:700; letter-spacing:0.28em; font-size: 11px; color:#c9a24b; text-transform: uppercase; margin-bottom: 18px;">Three palettes</div>
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 26px;">
+        <div>
+          <div style="font-family:'Cinzel'; font-size:15px; color:#e7c277; margin-bottom:10px;">01 · Caravan Lantern</div>
+          <div style="display:flex; gap:8px;">
+            <div style="flex:1; height:38px; border-radius:7px; background:#1a120b; border:1px solid rgba(255,255,255,0.06);"></div>
+            <div style="flex:1; height:38px; border-radius:7px; background:#ece0c4;"></div>
+            <div style="flex:1; height:38px; border-radius:7px; background:#d8b25a;"></div>
+            <div style="flex:1; height:38px; border-radius:7px; background:#d2773a;"></div>
+          </div>
+          <div style="font-family:'Mulish'; font-size:12px; color:#9c9276; margin-top:9px; line-height:1.5;">Warm tent, candlelight, aged parchment. Cozy.</div>
+        </div>
+        <div>
+          <div style="font-family:'Cinzel'; font-size:15px; color:#9fd2c8; margin-bottom:10px;">02 · Moonpath</div>
+          <div style="display:flex; gap:8px;">
+            <div style="flex:1; height:38px; border-radius:7px; background:#0d0f14; border:1px solid rgba(255,255,255,0.06);"></div>
+            <div style="flex:1; height:38px; border-radius:7px; background:#cdd9d7;"></div>
+            <div style="flex:1; height:38px; border-radius:7px; background:#74c7bb;"></div>
+            <div style="flex:1; height:38px; border-radius:7px; background:#3b5b86;"></div>
+          </div>
+          <div style="font-family:'Mulish'; font-size:12px; color:#9c9276; margin-top:9px; line-height:1.5;">Moonlit ink, silver &amp; teal. Arcane, scholarly.</div>
+        </div>
+        <div>
+          <div style="font-family:'Cinzel'; font-size:15px; color:#e3b945; margin-bottom:10px;">03 · Trickster's Ledger</div>
+          <div style="display:flex; gap:8px;">
+            <div style="flex:1; height:38px; border-radius:7px; background:#0c0a07; border:1px solid rgba(255,255,255,0.06);"></div>
+            <div style="flex:1; height:38px; border-radius:7px; background:#e3b945;"></div>
+            <div style="flex:1; height:38px; border-radius:7px; background:#6e2418;"></div>
+            <div style="flex:1; height:38px; border-radius:7px; background:#1e1a12;"></div>
+          </div>
+          <div style="font-family:'Mulish'; font-size:12px; color:#9c9276; margin-top:9px; line-height:1.5;">Gold-on-black merchant's book. Bold, playful.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ THREE DIRECTIONS ════════════════ -->
+  <div style="max-width: 1320px; margin: 0 auto; padding: 40px 40px 0;">
+    <div style="display:flex; align-items:center; gap:18px; margin-bottom: 30px;">
+      <div style="height:1px; flex:1; background: linear-gradient(90deg, transparent, rgba(201,162,75,0.4));"></div>
+      <div style="font-family:'Cinzel'; font-size:16px; color:#c9a24b; letter-spacing:0.3em;">THREE DIRECTIONS</div>
+      <div style="height:1px; flex:1; background: linear-gradient(90deg, rgba(201,162,75,0.4), transparent);"></div>
+    </div>
+
+    <div style="display:flex; gap: 36px; justify-content:center; flex-wrap:wrap;">
+
+      <!-- ───── DIRECTION 1 · CARAVAN LANTERN ───── -->
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <div style="text-align:center; margin-bottom:18px;">
+          <div style="font-family:'Cinzel'; font-size:20px; color:#e7c277; letter-spacing:0.06em;">Caravan Lantern</div>
+          <div style="font-family:'Mulish'; font-size:13px; color:#9c9276; margin-top:4px;">Warm · cozy · parchment &amp; candleflame</div>
+        </div>
+        <x-import component="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" width="402" height="874" hint-size="402px,874px">
+          <div style="height:100%; width:100%; position:relative; overflow:hidden; display:flex; flex-direction:column; font-family:'Mulish', sans-serif; background:
+                radial-gradient(120% 70% at 50% 0%, #3a2614 0%, #241710 38%, #1a120b 72%);">
+
+            <!-- scene + header -->
+            <div style="position:relative; padding: 56px 18px 16px; flex-shrink:0;">
+              <div style="position:absolute; inset:0; background-image:url('art/west-weald.png'); background-size:cover; background-position:center 40%; opacity:0.32;"></div>
+              <div style="position:absolute; inset:0; background: linear-gradient(180deg, rgba(26,18,11,0.45) 0%, rgba(26,18,11,0.78) 65%, #1a120b 100%);"></div>
+              <div style="position:relative; display:flex; align-items:center; gap:14px;">
+                <div style="width:58px; height:58px; border-radius:50%; padding:2px; background: linear-gradient(145deg, #e6c578, #8a6224); box-shadow: 0 0 22px rgba(216,178,90,0.4); flex-shrink:0;">
+                  <div style="width:100%; height:100%; border-radius:50%; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; background-color:#2a1c10;">
+                    <div style="position:absolute; width:20px; height:20px; border-radius:50%; border:2.5px solid #e7c277; top:14px;"></div>
+                    <div style="position:absolute; width:20px; height:20px; border-radius:50%; background:#2a1c10; top:11px; left:13px;"></div>
+                  </div>
+                </div>
+                <div style="flex:1;">
+                  <div style="font-family:'Cinzel'; font-weight:600; font-size:20px; color:#f3e3bd; letter-spacing:0.03em;">Zaharra</div>
+                  <div style="display:flex; align-items:center; gap:6px; margin-top:2px;">
+                    <span style="width:7px; height:7px; border-radius:50%; background:#7bc47f; box-shadow:0 0 8px #7bc47f;"></span>
+                    <span style="font-size:12px; color:#cbb88f;">The Caravaneer · keeping the lantern</span>
+                  </div>
+                </div>
+                <div style="width:36px; height:36px; border-radius:50%; border:1px solid rgba(216,178,90,0.4); display:flex; align-items:center; justify-content:center; color:#d8b25a; font-size:18px;">☾</div>
+              </div>
+            </div>
+
+            <!-- conversation -->
+            <div style="flex:1; overflow:hidden; padding: 8px 18px 4px; display:flex; flex-direction:column; gap:16px;">
+
+              <!-- caravaneer greeting -->
+              <div style="max-width:88%; align-self:flex-start;">
+                <div style="background: linear-gradient(160deg, #efe3c7 0%, #e4d4ad 100%); border-radius: 4px 18px 18px 18px; padding: 14px 16px; box-shadow: 0 6px 18px rgba(0,0,0,0.35); border:1px solid #cdb682;">
+                  <p style="margin:0; font-family:'Cormorant Garamond'; font-size:18px; font-style:italic; line-height:1.42; color:#3a2c18;">Sit, traveler — the kettle is warm and the moons are bright. Ask Zaharra your question; she trades wisdom for nothing but your patience, yes?</p>
+                </div>
+              </div>
+
+              <!-- user -->
+              <div style="max-width:80%; align-self:flex-end;">
+                <div style="background: linear-gradient(160deg, #6e3c1f 0%, #54290f 100%); border-radius: 18px 4px 18px 18px; padding: 12px 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                  <p style="margin:0; font-size:14.5px; line-height:1.45; color:#f4e3cf;">I'm new — what gear should my Sorcerer wear for damage?</p>
+                </div>
+              </div>
+
+              <!-- caravaneer + card -->
+              <div style="max-width:92%; align-self:flex-start;">
+                <div style="background: linear-gradient(160deg, #efe3c7 0%, #e4d4ad 100%); border-radius: 4px 18px 18px 18px; padding: 14px 16px 15px; box-shadow: 0 6px 18px rgba(0,0,0,0.35); border:1px solid #cdb682;">
+                  <p style="margin:0 0 13px; font-family:'Cormorant Garamond'; font-size:18px; font-style:italic; line-height:1.42; color:#3a2c18;">Ah, a child of the storm! This one has just the bundle. Weave these three and your lightning will sing —</p>
+
+                  <!-- build card -->
+                  <div style="background: #fbf3df; border:1px solid #d8b25a; border-radius:12px; overflow:hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; padding:11px 13px 9px; background: linear-gradient(180deg, #efe0bb, #e7d3a3); border-bottom:1px solid #d3b877;">
+                      <div>
+                        <div style="font-family:'Cinzel'; font-weight:600; font-size:14px; color:#5a3f15;">Stormcaller's Bundle</div>
+                        <div style="font-size:10.5px; font-weight:700; letter-spacing:0.1em; color:#9a7327; text-transform:uppercase; margin-top:2px;">Magicka Sorcerer · Damage</div>
+                      </div>
+                      <div style="font-size:22px; color:#c9952f;">⚡</div>
+                    </div>
+                    <div style="padding: 6px 13px 10px;">
+                      <!-- set rows -->
+                      <div style="display:flex; align-items:center; gap:11px; padding:8px 0; border-bottom:1px solid #ecdcb6;">
+                        <div style="width:34px; height:34px; border-radius:7px; background: linear-gradient(145deg,#6b4ea8,#3a2766); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);"><span style="color:#e7d8ff; font-size:15px;">✦</span></div>
+                        <div style="flex:1;"><div style="font-size:13.5px; font-weight:700; color:#3a2c18;">Slivers of the Null-Arca</div><div style="font-size:11px; color:#917a4d;">Body · 5 pieces</div></div>
+                        <div style="font-size:10px; font-weight:700; color:#9a7327; border:1px solid #d8b25a; border-radius:5px; padding:2px 6px;">5 pc</div>
+                      </div>
+                      <div style="display:flex; align-items:center; gap:11px; padding:8px 0; border-bottom:1px solid #ecdcb6;">
+                        <div style="width:34px; height:34px; border-radius:7px; background: linear-gradient(145deg,#b8472f,#7a2613); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);"><span style="color:#ffd9cb; font-size:15px;">⚔</span></div>
+                        <div style="flex:1;"><div style="font-size:13.5px; font-weight:700; color:#3a2c18;">Deadly Strike</div><div style="font-size:11px; color:#917a4d;">Jewelry &amp; Weapons · 5 pieces</div></div>
+                        <div style="font-size:10px; font-weight:700; color:#9a7327; border:1px solid #d8b25a; border-radius:5px; padding:2px 6px;">5 pc</div>
+                      </div>
+                      <div style="display:flex; align-items:center; gap:11px; padding:8px 0;">
+                        <div style="width:34px; height:34px; border-radius:7px; background: linear-gradient(145deg,#5f7d4a,#37491f); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);"><span style="color:#e4f3cd; font-size:15px;">☠</span></div>
+                        <div style="flex:1;"><div style="font-size:13.5px; font-weight:700; color:#3a2c18;">Slimecraw</div><div style="font-size:11px; color:#917a4d;">Head · Monster set</div></div>
+                        <div style="font-size:10px; font-weight:700; color:#9a7327; border:1px solid #d8b25a; border-radius:5px; padding:2px 6px;">1 pc</div>
+                      </div>
+                    </div>
+                    <div style="display:flex; gap:6px; padding: 0 13px 12px; flex-wrap:wrap;">
+                      <span style="font-size:10.5px; font-weight:700; color:#5a3f15; background:#efe0bb; border-radius:20px; padding:4px 10px;">Beginner-friendly</span>
+                      <span style="font-size:10.5px; font-weight:700; color:#5a3f15; background:#efe0bb; border-radius:20px; padding:4px 10px;">Top-10 logs</span>
+                      <span style="font-size:10.5px; font-weight:700; color:#5a3f15; background:#efe0bb; border-radius:20px; padding:4px 10px;">Crit-leaning</span>
+                    </div>
+                  </div>
+
+                  <p style="margin:12px 0 0; font-family:'Cormorant Garamond'; font-size:17px; font-style:italic; line-height:1.4; color:#5a4626;">The cat-skull upon your head, the rest upon your body. Simple, yes? Now go make the thunder jealous.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- input -->
+            <div style="flex-shrink:0; padding: 6px 16px 30px;">
+              <div style="display:flex; gap:8px; margin-bottom:10px; overflow:hidden;">
+                <span style="font-size:11.5px; font-weight:700; color:#e7c277; border:1px solid rgba(216,178,90,0.45); border-radius:20px; padding:6px 12px; white-space:nowrap;">Explain a set</span>
+                <span style="font-size:11.5px; font-weight:700; color:#e7c277; border:1px solid rgba(216,178,90,0.45); border-radius:20px; padding:6px 12px; white-space:nowrap;">Build a healer</span>
+                <span style="font-size:11.5px; font-weight:700; color:#e7c277; border:1px solid rgba(216,178,90,0.45); border-radius:20px; padding:6px 12px; white-space:nowrap;">Tell a tale</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px; background: rgba(239,224,187,0.1); border:1px solid rgba(216,178,90,0.4); border-radius:24px; padding: 11px 14px;">
+                <span style="flex:1; font-family:'Cormorant Garamond'; font-style:italic; font-size:16px; color:#a8966f;">Ask the Caravaneer…</span>
+                <div style="width:30px; height:30px; border-radius:50%; background: linear-gradient(145deg,#e6c578,#b8893c); display:flex; align-items:center; justify-content:center; color:#2a1c10; font-size:15px;">➤</div>
+              </div>
+            </div>
+          </div>
+        </x-import>
+      </div>
+
+      <!-- ───── DIRECTION 2 · MOONPATH ───── -->
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <div style="text-align:center; margin-bottom:18px;">
+          <div style="font-family:'Cinzel'; font-size:20px; color:#9fd2c8; letter-spacing:0.06em;">Moonpath</div>
+          <div style="font-family:'Mulish'; font-size:13px; color:#9c9276; margin-top:4px;">Mystic · moonlit ink, silver &amp; teal</div>
+        </div>
+        <x-import component="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" width="402" height="874" hint-size="402px,874px">
+          <div style="height:100%; width:100%; position:relative; overflow:hidden; display:flex; flex-direction:column; font-family:'Mulish', sans-serif; background:
+                radial-gradient(120% 60% at 50% 0%, #1b2733 0%, #11161e 42%, #0b0d12 78%);">
+            <!-- starfield -->
+            <div style="position:absolute; inset:0; background-image: radial-gradient(1.4px 1.4px at 30px 50px, rgba(207,224,222,0.8), transparent), radial-gradient(1.2px 1.2px at 160px 110px, rgba(207,224,222,0.6), transparent), radial-gradient(1.6px 1.6px at 280px 70px, rgba(116,199,187,0.7), transparent), radial-gradient(1.2px 1.2px at 220px 200px, rgba(207,224,222,0.5), transparent), radial-gradient(1.3px 1.3px at 80px 240px, rgba(207,224,222,0.6), transparent), radial-gradient(1.5px 1.5px at 340px 160px, rgba(116,199,187,0.6), transparent); background-repeat: no-repeat; opacity:0.7;"></div>
+
+            <!-- header -->
+            <div style="position:relative; padding: 56px 18px 16px; flex-shrink:0;">
+              <div style="position:absolute; inset:0; background-image:url('art/cloudrest.png'); background-size:cover; background-position:center 30%; opacity:0.22;"></div>
+              <div style="position:absolute; inset:0; background: linear-gradient(180deg, rgba(11,13,18,0.4) 0%, rgba(11,13,18,0.82) 70%, #0b0d12 100%);"></div>
+              <div style="position:relative; display:flex; align-items:center; gap:14px;">
+                <div style="width:58px; height:58px; border-radius:50%; padding:2px; background: linear-gradient(145deg, #9fd2c8, #2f5650); box-shadow: 0 0 24px rgba(116,199,187,0.45); flex-shrink:0;">
+                  <div style="width:100%; height:100%; border-radius:50%; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; background-color:#101820;">
+                    <div style="position:absolute; width:20px; height:20px; border-radius:50%; border:2.5px solid #9fd2c8; top:14px;"></div>
+                    <div style="position:absolute; width:20px; height:20px; border-radius:50%; background:#101820; top:11px; left:13px;"></div>
+                  </div>
+                </div>
+                <div style="flex:1;">
+                  <div style="font-family:'Cinzel'; font-weight:600; font-size:20px; color:#dce8e5; letter-spacing:0.03em;">Zaharra</div>
+                  <div style="display:flex; align-items:center; gap:6px; margin-top:2px;">
+                    <span style="width:7px; height:7px; border-radius:50%; background:#74c7bb; box-shadow:0 0 8px #74c7bb;"></span>
+                    <span style="font-size:12px; color:#9fb3b0;">The Caravaneer · reading the lattice</span>
+                  </div>
+                </div>
+                <div style="width:36px; height:36px; border-radius:50%; border:1px solid rgba(116,199,187,0.4); display:flex; align-items:center; justify-content:center; color:#9fd2c8; font-size:18px;">☾</div>
+              </div>
+            </div>
+
+            <!-- conversation -->
+            <div style="flex:1; overflow:hidden; padding: 8px 18px 4px; display:flex; flex-direction:column; gap:16px; position:relative;">
+
+              <div style="max-width:88%; align-self:flex-start;">
+                <div style="background: linear-gradient(160deg, rgba(31,43,54,0.92) 0%, rgba(20,28,37,0.92) 100%); border:1px solid rgba(116,199,187,0.3); border-radius: 4px 18px 18px 18px; padding: 14px 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.4);">
+                  <p style="margin:0; font-family:'Cormorant Garamond'; font-size:18px; font-style:italic; line-height:1.42; color:#d4e2df;">The moons trace your path here, seeker. Speak your need; this one reads the lattice and answers true.</p>
+                </div>
+              </div>
+
+              <div style="max-width:80%; align-self:flex-end;">
+                <div style="background: linear-gradient(160deg, #2c3e5e 0%, #1d2740 100%); border-radius: 18px 4px 18px 18px; padding: 12px 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.35);">
+                  <p style="margin:0; font-size:14.5px; line-height:1.45; color:#dbe6f3;">Which sets define the meta for magicka damage right now?</p>
+                </div>
+              </div>
+
+              <div style="max-width:92%; align-self:flex-start;">
+                <div style="background: linear-gradient(160deg, rgba(31,43,54,0.92) 0%, rgba(20,28,37,0.92) 100%); border:1px solid rgba(116,199,187,0.3); border-radius: 4px 18px 18px 18px; padding: 14px 16px 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.4);">
+                  <p style="margin:0 0 13px; font-family:'Cormorant Garamond'; font-size:18px; font-style:italic; line-height:1.42; color:#d4e2df;">The lattice is clear. Three threads weave the storm-mage's fate this season —</p>
+
+                  <div style="background: rgba(8,12,16,0.6); border:1px solid rgba(116,199,187,0.32); border-radius:12px; overflow:hidden;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; padding:11px 13px 9px; background: linear-gradient(180deg, rgba(116,199,187,0.12), rgba(116,199,187,0.03)); border-bottom:1px solid rgba(116,199,187,0.22);">
+                      <div>
+                        <div style="font-family:'Cinzel'; font-weight:600; font-size:14px; color:#cfe3df;">The Storm Weave</div>
+                        <div style="font-size:10.5px; font-weight:700; letter-spacing:0.1em; color:#74c7bb; text-transform:uppercase; margin-top:2px;">Magicka Sorcerer · Damage</div>
+                      </div>
+                      <div style="font-size:20px; color:#9fd2c8;">✦</div>
+                    </div>
+                    <div style="padding: 6px 13px 10px;">
+                      <div style="display:flex; align-items:center; gap:11px; padding:8px 0; border-bottom:1px solid rgba(116,199,187,0.12);">
+                        <div style="width:34px; height:34px; border-radius:7px; background: linear-gradient(145deg,#6b4ea8,#3a2766); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><span style="color:#e7d8ff; font-size:15px;">✦</span></div>
+                        <div style="flex:1;"><div style="font-size:13.5px; font-weight:700; color:#dce8e5;">Slivers of the Null-Arca</div><div style="font-size:11px; color:#7f968f;">Body · 5 pieces</div></div>
+                        <div style="font-size:10px; font-weight:700; color:#74c7bb; border:1px solid rgba(116,199,187,0.4); border-radius:5px; padding:2px 6px;">5 pc</div>
+                      </div>
+                      <div style="display:flex; align-items:center; gap:11px; padding:8px 0; border-bottom:1px solid rgba(116,199,187,0.12);">
+                        <div style="width:34px; height:34px; border-radius:7px; background: linear-gradient(145deg,#b8472f,#7a2613); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><span style="color:#ffd9cb; font-size:15px;">⚔</span></div>
+                        <div style="flex:1;"><div style="font-size:13.5px; font-weight:700; color:#dce8e5;">Deadly Strike</div><div style="font-size:11px; color:#7f968f;">Jewelry &amp; Weapons · 5 pieces</div></div>
+                        <div style="font-size:10px; font-weight:700; color:#74c7bb; border:1px solid rgba(116,199,187,0.4); border-radius:5px; padding:2px 6px;">5 pc</div>
+                      </div>
+                      <div style="display:flex; align-items:center; gap:11px; padding:8px 0;">
+                        <div style="width:34px; height:34px; border-radius:7px; background: linear-gradient(145deg,#5f7d4a,#37491f); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><span style="color:#e4f3cd; font-size:15px;">☠</span></div>
+                        <div style="flex:1;"><div style="font-size:13.5px; font-weight:700; color:#dce8e5;">Slimecraw</div><div style="font-size:11px; color:#7f968f;">Head · Monster set</div></div>
+                        <div style="font-size:10px; font-weight:700; color:#74c7bb; border:1px solid rgba(116,199,187,0.4); border-radius:5px; padding:2px 6px;">1 pc</div>
+                      </div>
+                    </div>
+                    <div style="display:flex; gap:6px; padding: 0 13px 12px; flex-wrap:wrap;">
+                      <span style="font-size:10.5px; font-weight:700; color:#9fd2c8; background:rgba(116,199,187,0.12); border-radius:20px; padding:4px 10px;">93% pick rate</span>
+                      <span style="font-size:10.5px; font-weight:700; color:#9fd2c8; background:rgba(116,199,187,0.12); border-radius:20px; padding:4px 10px;">~112k ceiling</span>
+                    </div>
+                  </div>
+
+                  <p style="margin:12px 0 0; font-family:'Cormorant Garamond'; font-size:17px; font-style:italic; line-height:1.4; color:#9bb0ac;">Numbers flatter, yet do not lie. A blade is only as keen as the hand — practice, then judge.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- input -->
+            <div style="flex-shrink:0; padding: 6px 16px 30px; position:relative;">
+              <div style="display:flex; gap:8px; margin-bottom:10px; overflow:hidden;">
+                <span style="font-size:11.5px; font-weight:700; color:#9fd2c8; border:1px solid rgba(116,199,187,0.4); border-radius:20px; padding:6px 12px; white-space:nowrap;">Compare sets</span>
+                <span style="font-size:11.5px; font-weight:700; color:#9fd2c8; border:1px solid rgba(116,199,187,0.4); border-radius:20px; padding:6px 12px; white-space:nowrap;">Why this?</span>
+                <span style="font-size:11.5px; font-weight:700; color:#9fd2c8; border:1px solid rgba(116,199,187,0.4); border-radius:20px; padding:6px 12px; white-space:nowrap;">Read the lore</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px; background: rgba(116,199,187,0.07); border:1px solid rgba(116,199,187,0.34); border-radius:24px; padding: 11px 14px;">
+                <span style="flex:1; font-family:'Cormorant Garamond'; font-style:italic; font-size:16px; color:#7f968f;">Ask the Caravaneer…</span>
+                <div style="width:30px; height:30px; border-radius:50%; background: linear-gradient(145deg,#9fd2c8,#3f7d72); display:flex; align-items:center; justify-content:center; color:#0b0d12; font-size:15px;">➤</div>
+              </div>
+            </div>
+          </div>
+        </x-import>
+      </div>
+
+      <!-- ───── DIRECTION 3 · TRICKSTER'S LEDGER ───── -->
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <div style="text-align:center; margin-bottom:18px;">
+          <div style="font-family:'Cinzel'; font-size:20px; color:#e3b945; letter-spacing:0.06em;">Trickster's Ledger</div>
+          <div style="font-family:'Mulish'; font-size:13px; color:#9c9276; margin-top:4px;">Bold · merchant's book, gold on black</div>
+        </div>
+        <x-import component="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" width="402" height="874" hint-size="402px,874px">
+          <div style="height:100%; width:100%; position:relative; overflow:hidden; display:flex; flex-direction:column; font-family:'Mulish', sans-serif; background: #0c0a07;">
+            <!-- ledger lines -->
+            <div style="position:absolute; inset:0; background-image: repeating-linear-gradient(0deg, transparent, transparent 33px, rgba(227,185,69,0.05) 33px, rgba(227,185,69,0.05) 34px); opacity:0.8;"></div>
+
+            <!-- header -->
+            <div style="position:relative; padding: 56px 18px 14px; flex-shrink:0; border-bottom:1px solid rgba(227,185,69,0.22);">
+              <div style="position:absolute; inset:0; background-image:url('art/dreadsail_reef.png'); background-size:cover; background-position:right 30%; opacity:0.2;"></div>
+              <div style="position:absolute; inset:0; background: linear-gradient(180deg, rgba(12,10,7,0.5) 0%, rgba(12,10,7,0.8) 70%, #0c0a07 100%);"></div>
+              <div style="position:relative; display:flex; align-items:center; gap:14px;">
+                <div style="width:58px; height:58px; border-radius:14px; padding:2px; background: linear-gradient(145deg, #f0cd6a, #8a6212); box-shadow: 0 0 22px rgba(227,185,69,0.4); flex-shrink:0; transform: rotate(-3deg);">
+                  <div style="width:100%; height:100%; border-radius:12px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; background-color:#1a140a;">
+                    <div style="position:absolute; width:20px; height:20px; border-radius:50%; border:2.5px solid #e3b945; top:15px;"></div>
+                    <div style="position:absolute; width:20px; height:20px; border-radius:50%; background:#1a140a; top:12px; left:13px;"></div>
+                  </div>
+                </div>
+                <div style="flex:1;">
+                  <div style="font-family:'Cinzel'; font-weight:700; font-size:20px; color:#f2d684; letter-spacing:0.03em;">Zaharra <span style="font-size:12px; color:#b08a2e; font-weight:500;">&amp; Co.</span></div>
+                  <div style="display:flex; align-items:center; gap:6px; margin-top:2px;">
+                    <span style="font-size:12px; color:#c0a458; font-style:italic; font-family:'Cormorant Garamond';">“Purveyor of wisdom &amp; other lies”</span>
+                  </div>
+                </div>
+                <div style="width:38px; height:38px; border-radius:50%; border:1.5px solid rgba(227,185,69,0.5); display:flex; align-items:center; justify-content:center; color:#e3b945; font-size:16px; font-weight:700;">◈</div>
+              </div>
+            </div>
+
+            <!-- conversation -->
+            <div style="flex:1; overflow:hidden; padding: 14px 18px 4px; display:flex; flex-direction:column; gap:15px; position:relative;">
+
+              <div style="max-width:90%; align-self:flex-start;">
+                <div style="background: #15110a; border:1px solid rgba(227,185,69,0.28); border-radius: 4px 16px 16px 16px; padding: 13px 15px;">
+                  <p style="margin:0; font-family:'Cormorant Garamond'; font-size:18px; font-style:italic; line-height:1.4; color:#e6d6a8;">Pssst. Over here. This one does not <i>sell</i> secrets — moons forbid — merely <i>lends</i> them. First question is free. Mostly.</p>
+                </div>
+              </div>
+
+              <div style="max-width:78%; align-self:flex-end;">
+                <div style="background: linear-gradient(160deg, #7e2c1c 0%, #5a1e10 100%); border-radius: 16px 4px 16px 16px; padding: 11px 14px;">
+                  <p style="margin:0; font-size:14.5px; line-height:1.45; color:#f7e3d4;">Best Sorcerer build. No nonsense.</p>
+                </div>
+              </div>
+
+              <div style="max-width:94%; align-self:flex-start;">
+                <div style="background: #15110a; border:1px solid rgba(227,185,69,0.28); border-radius: 4px 16px 16px 16px; padding: 13px 15px 14px;">
+                  <p style="margin:0 0 12px; font-family:'Cormorant Garamond'; font-size:18px; font-style:italic; line-height:1.4; color:#e6d6a8;">No nonsense! Hah — a rare customer. Straight from the champions' ledgers, no skooma added —</p>
+
+                  <!-- trade card -->
+                  <div style="background: linear-gradient(165deg, #1f1810 0%, #14100a 100%); border:1px solid #b8893c; border-radius:13px; overflow:hidden; box-shadow: 0 8px 22px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(227,185,69,0.15);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 14px 10px; border-bottom:1px solid rgba(227,185,69,0.25); background: linear-gradient(180deg, rgba(227,185,69,0.1), transparent);">
+                      <div>
+                        <div style="font-family:'Cinzel'; font-weight:700; font-size:15px; color:#f2d684;">The Storm Ledger</div>
+                        <div style="font-size:10.5px; font-weight:800; letter-spacing:0.1em; color:#c0954a; text-transform:uppercase; margin-top:3px;">Magicka Sorcerer · Damage</div>
+                      </div>
+                      <div style="text-align:center; border:1px solid rgba(227,185,69,0.4); border-radius:8px; padding:4px 8px;">
+                        <div style="font-family:'Cinzel'; font-weight:700; font-size:16px; color:#e3b945; line-height:1;">A+</div>
+                        <div style="font-size:8px; color:#a8843e; letter-spacing:0.1em; margin-top:2px;">TIER</div>
+                      </div>
+                    </div>
+                    <div style="padding: 4px 14px 8px;">
+                      <div style="display:flex; align-items:center; gap:11px; padding:9px 0; border-bottom:1px solid rgba(227,185,69,0.12);">
+                        <div style="width:34px; height:34px; border-radius:8px; background: linear-gradient(145deg,#6b4ea8,#3a2766); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><span style="color:#e7d8ff; font-size:15px;">✦</span></div>
+                        <div style="flex:1;"><div style="font-size:13.5px; font-weight:800; color:#efe2c2;">Slivers of the Null-Arca</div><div style="font-size:11px; color:#a8925f;">Body · 5 pieces</div></div>
+                        <div style="font-size:11px; font-weight:800; color:#e3b945;">5×</div>
+                      </div>
+                      <div style="display:flex; align-items:center; gap:11px; padding:9px 0; border-bottom:1px solid rgba(227,185,69,0.12);">
+                        <div style="width:34px; height:34px; border-radius:8px; background: linear-gradient(145deg,#b8472f,#7a2613); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><span style="color:#ffd9cb; font-size:15px;">⚔</span></div>
+                        <div style="flex:1;"><div style="font-size:13.5px; font-weight:800; color:#efe2c2;">Deadly Strike</div><div style="font-size:11px; color:#a8925f;">Jewelry &amp; Weapons · 5 pieces</div></div>
+                        <div style="font-size:11px; font-weight:800; color:#e3b945;">5×</div>
+                      </div>
+                      <div style="display:flex; align-items:center; gap:11px; padding:9px 0;">
+                        <div style="width:34px; height:34px; border-radius:8px; background: linear-gradient(145deg,#5f7d4a,#37491f); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><span style="color:#e4f3cd; font-size:15px;">☠</span></div>
+                        <div style="flex:1;"><div style="font-size:13.5px; font-weight:800; color:#efe2c2;">Slimecraw</div><div style="font-size:11px; color:#a8925f;">Head · Monster set</div></div>
+                        <div style="font-size:11px; font-weight:800; color:#e3b945;">1×</div>
+                      </div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; padding: 10px 14px; border-top:1px solid rgba(227,185,69,0.2); background: rgba(227,185,69,0.05);">
+                      <span style="font-size:11px; color:#c0954a; font-family:'Cormorant Garamond'; font-style:italic;">Price: one favour, payable in good play.</span>
+                      <span style="font-size:16px; color:#e3b945;">◉</span>
+                    </div>
+                  </div>
+
+                  <p style="margin:12px 0 0; font-family:'Cormorant Garamond'; font-size:17px; font-style:italic; line-height:1.4; color:#c0a458;">The ledger remembers, friend. <span style="color:#e3b945;">*smiles with too many teeth*</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- input -->
+            <div style="flex-shrink:0; padding: 6px 16px 30px; position:relative;">
+              <div style="display:flex; gap:8px; margin-bottom:10px; overflow:hidden;">
+                <span style="font-size:11.5px; font-weight:800; color:#e3b945; background: rgba(227,185,69,0.1); border:1px solid rgba(227,185,69,0.4); border-radius:8px; padding:6px 12px; white-space:nowrap;">Cheaper option?</span>
+                <span style="font-size:11.5px; font-weight:800; color:#e3b945; background: rgba(227,185,69,0.1); border:1px solid rgba(227,185,69,0.4); border-radius:8px; padding:6px 12px; white-space:nowrap;">Where to farm</span>
+                <span style="font-size:11.5px; font-weight:800; color:#e3b945; background: rgba(227,185,69,0.1); border:1px solid rgba(227,185,69,0.4); border-radius:8px; padding:6px 12px; white-space:nowrap;">A tale</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px; background: #15110a; border:1px solid rgba(227,185,69,0.4); border-radius:12px; padding: 11px 14px;">
+                <span style="flex:1; font-family:'Cormorant Garamond'; font-style:italic; font-size:16px; color:#8f7a45;">Make an offer…</span>
+                <div style="width:32px; height:32px; border-radius:8px; background: linear-gradient(145deg,#f0cd6a,#b8893c); display:flex; align-items:center; justify-content:center; color:#1a140a; font-size:15px; font-weight:700;">➤</div>
+              </div>
+            </div>
+          </div>
+        </x-import>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- footer note -->
+  <div style="max-width: 1320px; margin: 0 auto; padding: 44px 40px 0;">
+    <div style="border-top:1px solid rgba(201,162,75,0.18); padding-top:22px; display:flex; gap:30px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:240px;">
+        <div style="font-family:'Cinzel'; font-size:13px; color:#c9a24b; letter-spacing:0.16em; margin-bottom:8px;">WHAT'S REAL HERE</div>
+        <p style="font-family:'Mulish'; font-size:13.5px; color:#9c9276; line-height:1.7; margin:0;">Set names, roles and the “top-10 logs” framing come straight from your eso-build-o-rama data. The Caravaneer just wraps them in voice — facts stay honest.</p>
+      </div>
+      <div style="flex:1; min-width:240px;">
+        <div style="font-family:'Cinzel'; font-size:13px; color:#c9a24b; letter-spacing:0.16em; margin-bottom:8px;">NEXT, IF YOU LIKE ONE</div>
+        <p style="font-family:'Mulish'; font-size:13.5px; color:#9c9276; line-height:1.7; margin:0;">Pick a direction (or mix — e.g. Moonpath mood with Ledger's trade-cards) and I'll make it a working prototype: live typing, tappable set cards, a real ask box.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
